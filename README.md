@@ -32,6 +32,14 @@ __Examples:__
 ```
 cp filename.cpp myCopy.cpp
 cp -r myFolder/ myNewFolder
+
+options:
+  -p: copy permissions
+  -a: copy directory heirarchy recursively, preserving
+      all file attributes and links
+  -r: copy directory hierarchy; does NOT do a
+  -i: interactive mode
+  -f: force the copy
 ```
 ---
 
@@ -42,10 +50,13 @@ rm (options) files
 rm file1 file2
 rm -r file1
 Note: DO NOT USE rm -r -f File (deletes all files)
+
+options:
+  -r:recursively remove directory and contents
 ```
 ---
 
-__rmdir__ - _Make a directory_
+__rkdir__ - _Make a directory_
 
 __Examples:__
 
@@ -67,6 +78,8 @@ rmdir -r NonEmptyDirectory
 ---
 
 __ln -s__ - _Symbolic Link or Soft Link; Refers to Another File by its Path_
+            _Can point to files on other disk partitions_
+            _in general: ln regerence to another file_
 
 __Examples:__
 
@@ -74,6 +87,11 @@ __Examples:__
 ln (options) source target
 ln -s myfile mysoftlink
 ln -s afile shortcut
+ln -s name_A name_B
+
+options:
+  -s: symbolic link (soft)
+  -d: create hard link to a directory
 ```
 ---
 
@@ -96,16 +114,31 @@ ls (options)
 ls LabFoler
 ls -a (Displays Hidden Files)
 ls *.txt
+
+options:
+  -a: lists all files, dot files (hidden)
+  -l: long lasting (file attributes)
+  -d: if listing directory, don't list contents, just dir itself
 ```
 ---
 
-__tar__ - _Backing Up Files_
+__tar__ - _Backing Up Files, file-packing_
 
 __Examples:__
 
 ```
 tar -czvf myarchive.tar.gz mydirectory
 tar -xvf myarchive.tar file1 file2
+
+options:
+  -c: create and archive
+  -r: append files to existing archive
+  -u: append changed/new files to existing one
+  -x: extract files from archive
+  -f file: read archive from file
+  -d: diff 
+  -z: use gzip compression
+  -v: verbose mode: print extra info
 ```
 
 
@@ -127,15 +160,27 @@ __Examples:__
 ```
 wget url
 wget http://www.yahoo.com/informationaboutsomething
+
+options:
+  -c: continue mode
 ```
 ---
 
-__scp__ - _Secure Copy Copies Files and Directories from One Computer to Another_
+__scp__ - _Secure Copy Copies Files and Directories from One Computer to Another branch_
 
 __Examples:__
 
 ```
 scp myfile remote.example.com:newfile
+
+recursively copy a directory to a remote machine
+$ scp -r mydir remote.example.com:
+
+copy a remote file to your local machine
+$ scp remote.example.com:myfile .
+
+recursively copy remote dir to local machine
+$ scp -r remote.example.come:mydir .
 ```
 ---
 
@@ -146,6 +191,13 @@ __Examples:__
 ```
 rsync D1 D2
 rsync -a D1 D2 (mirroring: copy all attributes of file)
+rsync -a -e ssh D1 smith@server.example.com:D2
+
+options:
+  -o: copy ownership of files
+  -g: copy group ownership of files
+  -p: copy permissions
+  -t: copy file timestamps
 ```
 ---
 
@@ -158,6 +210,10 @@ __Examples:__
 ```
 cat MyFile.txt
 cat myprogram.cpp
+
+options:
+  -T: print tabs as ^l
+  -E: print new lines as $
 ```
 ---
 
@@ -168,6 +224,15 @@ __Examples:__
 sort myfile.txt
 sort myfile.txt > sortedfile.txt
 sort -n myfile.txt > sorted_by_number.txt
+
+options:
+  -f: case-insensitive sorting
+  -n: sort numerically
+  -u: unique sorting: ignore duplicates
+  -c: don't sort just check if input is sorted
+      only prints error message
+  -b: ignore leading whitespace
+  -r: reverse output: greatest to least
 ```
 ---
 
@@ -176,7 +241,17 @@ __uniq__ - _Finds Unique Words in a File_
 __Examples:__
 ```
 uniq myfile.txt
+$ sort myfile | uniq -c
+    1 a
+    3 b
+    1 c
 uniq -c myfile.txt (displays the count of of each word)
+
+options:
+  -c: count adjacent lines
+  -i: case insensitive
+  -u: unique lines only
+  -d: print dublicates only
 ```
 ---
 
@@ -187,4 +262,14 @@ __Examples:__
 grep (text to look for) FileName
 grep hello MyFile
 grep -i the MyFile (does not consider uppercase)
+
+options:
+  -v: print only lines that DO NOT match regular expression
+  -l: print only the names of files that containe match NOT LINES THEMSELVES
+  -L: print names of files that DO NOT match reg exp
+  -c: print count of matching lines
+  -n: in front of each line of matching output, print its orig line number
+  -i: case insensitive match
+  -w: complete words
+  -x: complete lines
 ```
