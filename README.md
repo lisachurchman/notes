@@ -273,3 +273,36 @@ options:
   -w: complete words
   -x: complete lines
 ```
+---
+
+## Others gone over for class
+
+__tail__ - _Prints last 10 lines of file_
+
+__Examples:__
+
+```
+tail -15 myFile (prints 15 lines not 10)
+```
+---
+__touch__ - _changes timestampts, can create empty files_
+
+__Examples:__
+
+```
+touch myfile (set timestamps to rn)
+touch -d "November 18 1975" myfile
+```
+---
+
+__chmod__ - _(Change Mode) protects files and directories from unauthorized users; sets permissions_
+
+__Examples:__
+
+```
+to use:
+  scope: u for user, g for group, o for users not in group, a for all users
+  command: + to add; - to remove, = to set permissions
+  permissions: r (read), w (write), x (execute)
+```
+---
