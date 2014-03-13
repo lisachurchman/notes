@@ -304,5 +304,76 @@ to use:
   scope: u for user, g for group, o for users not in group, a for all users
   command: + to add; - to remove, = to set permissions
   permissions: r (read), w (write), x (execute)
+  ug+rw: add read&write permissions to user and group
+  -x: remove permissions to execute for everyone
 ```
 ---
+__find__ - _searches directories to find certain criteria_
+
+__Examples:__
+
+```
+find particular file named myfile
+ $ find / -type f -name myfile -print
+
+print all directory names
+ $ find / -type d print
+ 
+print file names ending in .txt
+ $ find -type f -name \*.txt -print
+```
+---
+
+__xargs__ - _reads in standard input, turns them into commands, executes_
+
+__Examples:__
+
+```
+$ cat mycode | xargs rm
+```
+---
+
+__finger__ - _prints logged-in user info in short form_
+
+__Examples:__
+
+```
+options:
+  -l: long format
+  -s: short format
+```
+
+__awk__ - _prints specific data_
+
+__Examples:__
+
+```
+print second and 4th work on a line
+ $ awk '{print $2, $4}' afile
+ 
+print lines shorter than 20 characters
+ $ awk 'length < 20 {print}' afile
+```
+---
+
+__sed__ - _form manipulation of text_
+
+__Examples:__
+
+```
+print file, change hello to sup
+ $ sed 's/hello/sup/g' helloworld
+ 
+print file with 1st 5 lines removed
+ $ sed '1,5d' helloworld
+```
+---
+
+__other notes__ - _._
+
+__Examples:__
+
+```
+wc -w myfile (wordcount of just words)
+which: seach for file in path
+```
